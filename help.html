@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Help Chat Box</title>
+    <style>
+        body{
+            background: url('fromm unsplash 1.avif');
+        }
+        #chat-container {
+            width: 350px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            background: #f9f9f9;
+            bottom: 20px;
+            right: 250px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            font-family: Arial, sans-serif;
+            position: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #chat-messages {
+            height: 200px;
+            overflow-y: auto;
+            background: #f8f7f7;
+            border: 1px solid #d3bcbc;
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .chat-message {
+            margin-bottom: 8px;
+        }
+        .chat-user {
+            font-weight: bold;
+            color: #c2df72;
+        }
+        #chat-form {
+            display: flex;
+            gap: 5px;
+        }
+        #chat-input {
+            flex: 1;
+            padding: 6px;
+            border-radius: 4px;
+            border: 1px solid #b96e6e;
+            font-size: 14px;
+        }
+        #chat-send {
+            padding: 6px 12px;
+            border: none;
+            background: #0078d7;
+            color: #fff;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        #chat-send:hover {
+            background: #e2a7e7;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat-messages"></div>
+        <form id="chat-form" autocomplete="off">
+            <input type="text" id="chat-input" placeholder="Type your message..." required />
+            <button type="submit" id="chat-send">Send</button>
+        </form>
+    </div>
+    <div id="contact-info" style="margin-bottom: 12px;"></div>
+        <input type="text" id="user-name" placeholder="Enter your name or email..." required style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #b96e6e; font-size: 14px; margin-bottom: 6px;">
+    </div>
+    <script>
+        // Prevent sending messages if user info is not filled
+        chatForm.addEventListener('submit', function(e) {
+            const userNameInput = document.getElementById('user-name');
+            if (!userNameInput.value.trim()) {
+                userNameInput.focus();
+                alert('Please enter your name or email before sending a message.');
+                e.preventDefault();
+                return false;
+            }
+            // Add user name to message
+            const lastMsg = chatMessages.lastElementChild;
+            if (lastMsg && lastMsg.innerHTML.startsWith('<span class="chat-user">You:')) {
+                lastMsg.querySelector('.chat-user').textContent = userNameInput.value + ':';
+            }
+        });
+
+        // Modify message sending to use user name
+        chatForm.removeEventListener('submit', arguments.callee);
+        chatForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const userNameInput = document.getElementById('user-name');
+            const userName = userNameInput.value.trim() || 'You';
+            const message = chatInput.value.trim();
+            if (!userName) {
+                userNameInput.focus();
+                alert('Please enter your name or email before sending a message.');
+                return;
+            }
+            if (message) {
+                const msgDiv = document.createElement('div');
+                msgDiv.className = 'chat-message';
+                msgDiv.innerHTML = `<span class="chat-user">${userName}:</span> ${message}`;
+                chatMessages.appendChild(msgDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                chatInput.value = '';
+            }
+        });
+    </script>
+    <script>
+        const chatForm = document.getElementById('chat-form');
+        const chatInput = document.getElementById('chat-input');
+        const chatMessages = document.getElementById('chat-messages');
+
+        chatForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const message = chatInput.value.trim();
+            if (message) {
+                const msgDiv = document.createElement('div');
+                msgDiv.className = 'chat-message';
+                msgDiv.innerHTML = `<span class="chat-user">You:</span> ${message}`;
+                chatMessages.appendChild(msgDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                chatInput.value = '';
+            }
+        });
+    </script>
+</body>
+</html>

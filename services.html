@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Services - Blog Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            background: #f9f9f9;
+            color: #222;
+        }
+        header {
+            background: linear-gradient(90deg, #4e54c8, #8f94fb);
+            color: #fff;
+            padding: 2rem 1rem 1rem 1rem;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+        nav {
+            margin-top: 1rem;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        nav a:hover {
+            color: #ffd700;
+        }
+        .services-section {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(78,84,200,0.08);
+            animation: fadeIn 1s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .services-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+        .service-card {
+            flex: 1 1 250px;
+            background: #f4f6ff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(78,84,200,0.06);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+        }
+        .service-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 8px 24px rgba(78,84,200,0.14);
+        }
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #4e54c8;
+            animation: bounce 1.5s infinite alternate;
+        }
+        @keyframes bounce {
+            to { transform: translateY(-8px);}
+        }
+        .service-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+        .service-desc {
+            color: #555;
+            font-size: 1rem;
+        }
+        @media (max-width: 700px) {
+            .services-list {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Our Services</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="blog.html">Blog</a>
+            <a href="services.html">Services</a>
+            <a href="help.html">Contact</a>
+        </nav>
+    </header>
+    <section class="services-section">
+        <h2 style="text-align:center; margin-bottom:2rem;">What We Offer</h2>
+        <div class="services-list">
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
+                <div class="service-title">Content Creation</div>
+                <div class="service-desc">Engaging articles, tutorials, and guides tailored to your interests and needs.</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-bullhorn"></i></div>
+                <div class="service-title">Promotion & Outreach</div>
+                <div class="service-desc">Boost your blog's reach with our SEO and social media strategies.</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-comments"></i></div>
+                <div class="service-title">Community Engagement</div>
+                <div class="service-desc">Interactive comment sections and forums to connect with your audience.</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><i class="fas fa-chart-line"></i></div>
+                <div class="service-title">Analytics</div>
+                <div class="service-desc">Track your blog's performance with real-time analytics and insights.</div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
